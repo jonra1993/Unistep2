@@ -79,6 +79,7 @@ void Unistep2::nextStep()
 void Unistep2::move(long steps){
   powerUp();
   stepstogo = steps;
+  _lastStepTime = micros();
 }
 
 // Setup a movement to position. Calculate and set stepstogo.
@@ -90,6 +91,7 @@ void Unistep2::moveTo(unsigned long pos){
   {
     stepstogo = (stepstogo > 0 ) ? stepstogo - stepsperrev : stepstogo + stepsperrev ;
   }
+  _lastStepTime = micros();
 }
 
 // Change the step delay for a stepper that had already been initialized.
